@@ -11,12 +11,18 @@ public class Test {
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException {
         for (; ; ) {
-            ClassLoader loader = new DynamicClassOverLoader(new String[]{".", "/home/mikalai/gitProjects/CDP/build/classes/main"});
-            // текущий каталог "." будет единственным каталогом поиска
-            Class clazz = Class.forName("com.epam.cdp.lesson1.part2.TestModule", true, loader);
-            Object object = clazz.newInstance();
-            System.out.println(object);
-            new BufferedReader(new InputStreamReader(System.in)).readLine();
+//            ClassLoader loader = new DynamicClassOverLoader(new String[]{".", "/home/mikalai/gitProjects/CDP/build/classes/main"});
+//            Class clazz = Class.forName("com.epam.cdp.lesson1.part2.TestModule", true, loader);
+//            Object object = clazz.newInstance();
+//            System.out.println(object);
+//            new BufferedReader(new InputStreamReader(System.in)).readLine();
+
+            ClassLoader loader= new DynamicClassOverLoader(new String[] {".", "/home/mikalai/gitProjects/CDP/build/classes/main"});
+            Class clazz= Class.forName("com.epam.cdp.lesson1.part2.DynamicModule",true,loader);
+            TrueStaticModule trueStaticModule=(TrueStaticModule) clazz.newInstance();
+            System.out.println(trueStaticModule.getCounter());
+            System.out.println(trueStaticModule);
+            new BufferedReader(new InputStreamReader (System.in)).readLine();
         }
     }
 }

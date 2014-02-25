@@ -38,6 +38,9 @@ public class DynamicClassOverLoader extends ClassLoader {
             return result;
         }
 
+        if (name.toLowerCase().contains("truestatic"))
+            return findSystemClass(name);
+
         File f = findFile(name.replace('.', '/'), ".class");
         System.out.println("% Class " + name + (f == null ? "" : " found in " + f));
 
